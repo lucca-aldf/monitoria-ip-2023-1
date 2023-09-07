@@ -1,23 +1,35 @@
 import pygame as pg
 
-DISPLAY_WIDTH = 1280
-DISPLAY_HEIGHT = 640
-DISPLAY_RESOLUTION = (DISPLAY_WIDTH, DISPLAY_HEIGHT)
+class Estudante:
+    
+    def __init__(self, nome, idade):
+        self.nome = nome
+        self.idade = idade
+
+
+estudante_1 = Estudante('Pedro', 18)
+estudante_2 = Estudante('Marcus', 19)
+
+print(estudante_1.nome)
+
+DISPLAY_LARGURA = 1280
+DISPLAY_ALTURA = 640
+DISPLAY_RESOLUCAO = (DISPLAY_LARGURA, DISPLAY_ALTURA)
 
 
 pg.init()
 
-display_screen = pg.display.set_mode(DISPLAY_RESOLUTION)
+display_tela = pg.display.set_mode(DISPLAY_RESOLUCAO)
 
-clock = pg.clock.Clock()
-running = True
-while running:
-    for event in pg.event.get():
-        if event.type == pg.QUIT or (event.type == pg.KEYDOWN and pg.key.get_pressed()[pg.K_ESCAPE]):
-            running = False
+relogio = pg.time.Clock()
+rodando = True
+while rodando:
+    for evento in pg.event.get():
+        if evento.type == pg.QUIT or (evento.type == pg.KEYDOWN and pg.key.get_pressed()[pg.K_ESCAPE]):
+            rodando = False
             break
     
-    clock.tick(60)
-    print(clock.get_fps())
+    relogio.tick(60)
+    print(relogio.get_fps())
 
 pg.quit()
